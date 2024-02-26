@@ -21,7 +21,7 @@ type Ball struct {
 	colour     *drawing.Pixel
 }
 
-func NewStaticBall(x, y, radius float64, colour *drawing.Pixel) *Ball {
+func NewBall(x, y, radius float64, colour *drawing.Pixel) *Ball {
 	return &Ball{
 		x:      x,
 		y:      y,
