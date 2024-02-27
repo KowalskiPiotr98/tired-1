@@ -6,14 +6,21 @@ import (
 	"tired-1/balls"
 )
 
+const (
+	cellHalfSize   = 25
+	fieldSideCount = 10
+	playFieldSide  = fieldSideCount * cellHalfSize * 2
+)
+
 func main() {
-	if err := ebiten.RunGame(balls.NewGame(800, 800)); err != nil {
+	initWindow()
+	if err := ebiten.RunGame(balls.NewGame(playFieldSide, playFieldSide)); err != nil {
 		log.Fatal(err)
 	}
 }
 
 func initWindow() {
-	const height, width, title = 800, 800, "I'm sorry"
+	const height, width, title = playFieldSide, playFieldSide, "I'm sorry"
 	ebiten.SetWindowSize(width, height)
 	ebiten.SetWindowTitle(title)
 }
