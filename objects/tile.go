@@ -26,3 +26,19 @@ func (t *Tile) Draw(grid *drawing.Grid) {
 		}
 	}
 }
+
+func (t *Tile) HandleBallTouch(ball *Ball) {
+	if *ball.colour == *t.colour {
+		// ignore same colour balls
+		return
+	}
+
+	direction := areTouching(ball, t)
+	if direction == 0 {
+		return
+	}
+
+	// steal ball colour
+	t.colour = ball.colour
+	ball.Bounce(direction)
+}

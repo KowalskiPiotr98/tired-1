@@ -1,17 +1,9 @@
 package objects
 
 import (
+	"math"
 	"tired-1/drawing"
 	"tired-1/utils"
-)
-
-type BallWallDirection int8
-
-const (
-	Top BallWallDirection = iota
-	Right
-	Bottom
-	Left
 )
 
 type Ball struct {
@@ -37,8 +29,20 @@ func (b *Ball) Move() {
 	b.y += b.movY
 }
 
-func (b *Ball) Bounce(direction BallWallDirection) {
-	//todo
+func (b *Ball) Bounce(direction TouchDirection) {
+	switch direction {
+	case touchTop:
+		b.movX = math.Abs(b.movX)
+	case touchRight:
+		b.movY = -math.Abs(b.movY)
+	case touchBottom:
+		b.movX = -math.Abs(b.movX)
+	case touchLeft:
+		b.movY = math.Abs(b.movY)
+	case touchNone:
+	default:
+		return
+	}
 }
 
 func (b *Ball) Draw(grid *drawing.Grid) {
