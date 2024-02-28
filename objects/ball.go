@@ -32,13 +32,13 @@ func (b *Ball) Move() {
 func (b *Ball) Bounce(direction TouchDirection) {
 	switch direction {
 	case touchTop:
-		b.movX = math.Abs(b.movX)
-	case touchRight:
-		b.movY = -math.Abs(b.movY)
-	case touchBottom:
-		b.movX = -math.Abs(b.movX)
-	case touchLeft:
 		b.movY = math.Abs(b.movY)
+	case touchRight:
+		b.movX = -math.Abs(b.movX)
+	case touchBottom:
+		b.movY = -math.Abs(b.movY)
+	case touchLeft:
+		b.movX = math.Abs(b.movX)
 	case touchNone:
 	default:
 		return

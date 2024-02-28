@@ -39,6 +39,12 @@ func NewGame(width int, height int) *Game {
 		objects.NewTile(360, 200, 20, drawing.PixelGreen),
 		objects.NewTile(380, 200, 20, drawing.PixelGreen),
 		objects.NewTile(400, 200, 20, drawing.PixelGreen),
+		objects.NewTile(200, 100, 20, drawing.PixelGreen),
+		objects.NewTile(200, 120, 20, drawing.PixelGreen),
+		objects.NewTile(200, 140, 20, drawing.PixelGreen),
+		objects.NewTile(200, 160, 20, drawing.PixelGreen),
+		objects.NewTile(200, 180, 20, drawing.PixelGreen),
+		objects.NewTile(200, 200, 20, drawing.PixelGreen),
 	}
 	return &Game{
 		grid:  grid,
