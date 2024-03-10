@@ -2,6 +2,7 @@ package balls
 
 import (
 	"github.com/hajimehoshi/ebiten/v2"
+	"os"
 	"tired-1/drawing"
 	"tired-1/objects"
 )
@@ -54,6 +55,9 @@ func NewGame(width int, height int) *Game {
 }
 
 func (g *Game) Update() error {
+	if ebiten.IsKeyPressed(ebiten.KeyEscape) {
+		os.Exit(0)
+	}
 	for _, ball := range g.balls {
 		ball.Move()
 	}
