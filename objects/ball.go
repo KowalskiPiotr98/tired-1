@@ -15,12 +15,13 @@ type Ball struct {
 }
 
 func NewBall(x, y, radius float64, touchColour *drawing.Pixel, drawColour *drawing.Pixel) *Ball {
+	movX, movY := getRandomMovementVector(radius / 2)
 	return &Ball{
 		x:           x,
 		y:           y,
 		radius:      radius,
-		movX:        2,
-		movY:        2,
+		movX:        movX,
+		movY:        movY,
 		touchColour: touchColour,
 		drawColour:  drawColour,
 	}

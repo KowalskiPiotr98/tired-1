@@ -2,6 +2,7 @@ package objects
 
 import (
 	"math"
+	"math/rand/v2"
 	"tired-1/drawing"
 )
 
@@ -50,4 +51,10 @@ func BounceWall(ball *Ball, grid *drawing.Grid) {
 	if ball.y+ball.radius >= float64(grid.Width) {
 		ball.Bounce(touchBottom)
 	}
+}
+
+func getRandomMovementVector(length float64) (movX, movY float64) {
+	movX = rand.Float64() * length
+	movY = math.Sqrt(length*length - movX*movX)
+	return
 }
