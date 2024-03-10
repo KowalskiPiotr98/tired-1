@@ -14,38 +14,17 @@ type Game struct {
 }
 
 func NewGame(width int, height int) *Game {
+	objectSize := 50
 	grid := drawing.NewGrid(width, height)
 	balls := []*objects.Ball{
-		objects.NewBall(100, 100, 10, drawing.PixelRed, drawing.PixelBlue),
+		objects.NewBall(float64(width)/4, float64(height)/2, float64(objectSize)/2, drawing.PixelRed, drawing.PixelBlue),
+		objects.NewBall(float64(width)/4*3, float64(height)/2, float64(objectSize)/2, drawing.PixelBlue, drawing.PixelRed),
 	}
-	tiles := []*objects.Tile{
-		objects.NewTile(0, 200, 20, drawing.PixelGreen),
-		objects.NewTile(20, 200, 20, drawing.PixelGreen),
-		objects.NewTile(40, 200, 20, drawing.PixelGreen),
-		objects.NewTile(60, 200, 20, drawing.PixelGreen),
-		objects.NewTile(80, 200, 20, drawing.PixelGreen),
-		objects.NewTile(100, 200, 20, drawing.PixelGreen),
-		objects.NewTile(120, 200, 20, drawing.PixelGreen),
-		objects.NewTile(140, 200, 20, drawing.PixelGreen),
-		objects.NewTile(160, 200, 20, drawing.PixelGreen),
-		objects.NewTile(180, 200, 20, drawing.PixelGreen),
-		objects.NewTile(200, 200, 20, drawing.PixelGreen),
-		objects.NewTile(220, 200, 20, drawing.PixelGreen),
-		objects.NewTile(240, 200, 20, drawing.PixelGreen),
-		objects.NewTile(260, 200, 20, drawing.PixelGreen),
-		objects.NewTile(280, 200, 20, drawing.PixelGreen),
-		objects.NewTile(300, 200, 20, drawing.PixelGreen),
-		objects.NewTile(320, 200, 20, drawing.PixelGreen),
-		objects.NewTile(340, 200, 20, drawing.PixelGreen),
-		objects.NewTile(360, 200, 20, drawing.PixelGreen),
-		objects.NewTile(380, 200, 20, drawing.PixelGreen),
-		objects.NewTile(400, 200, 20, drawing.PixelGreen),
-		objects.NewTile(200, 100, 20, drawing.PixelGreen),
-		objects.NewTile(200, 120, 20, drawing.PixelGreen),
-		objects.NewTile(200, 140, 20, drawing.PixelGreen),
-		objects.NewTile(200, 160, 20, drawing.PixelGreen),
-		objects.NewTile(200, 180, 20, drawing.PixelGreen),
-		objects.NewTile(200, 200, 20, drawing.PixelGreen),
+	tiles := make([]*objects.Tile, 0)
+	for i := 0; i <= height; i += objectSize {
+		for j := 0; j <= width; j += objectSize {
+			tiles = append(tiles, objects.NewTile(float64(i), float64(j), float64(objectSize), drawing.PixelRed))
+		}
 	}
 	return &Game{
 		grid:  grid,
@@ -73,7 +52,6 @@ func (g *Game) Update() error {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	g.grid.Fill(drawing.PixelRed)
 	for _, tile := range g.tiles {
 		tile.Draw(g.grid)
 	}
