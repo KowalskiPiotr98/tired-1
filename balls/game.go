@@ -73,7 +73,7 @@ func (g *Game) Update() error {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	g.grid.Fill(drawing.PixelBlue)
+	g.grid.Fill(drawing.PixelRed)
 	for _, tile := range g.tiles {
 		tile.Draw(g.grid)
 	}
