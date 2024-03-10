@@ -9,18 +9,20 @@ import (
 type Ball struct {
 	x, y, radius float64
 	// movement vertex
-	movX, movY float64
-	colour     *drawing.Pixel
+	movX, movY  float64
+	touchColour *drawing.Pixel
+	drawColour  *drawing.Pixel
 }
 
-func NewBall(x, y, radius float64, colour *drawing.Pixel) *Ball {
+func NewBall(x, y, radius float64, touchColour *drawing.Pixel, drawColour *drawing.Pixel) *Ball {
 	return &Ball{
-		x:      x,
-		y:      y,
-		radius: radius,
-		movX:   2,
-		movY:   2,
-		colour: colour,
+		x:           x,
+		y:           y,
+		radius:      radius,
+		movX:        2,
+		movY:        2,
+		touchColour: touchColour,
+		drawColour:  drawColour,
 	}
 }
 
@@ -52,7 +54,7 @@ func (b *Ball) Draw(grid *drawing.Grid) {
 			yDist := utils.Round(b.y) - y
 			dist := xDist*xDist + yDist*yDist
 			if float64(dist) <= b.radius*b.radius {
-				grid.SetPixel(x, y, b.colour)
+				grid.SetPixel(x, y, b.drawColour)
 			}
 		}
 	}

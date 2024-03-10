@@ -16,7 +16,7 @@ type Game struct {
 func NewGame(width int, height int) *Game {
 	grid := drawing.NewGrid(width, height)
 	balls := []*objects.Ball{
-		objects.NewBall(100, 100, 10, drawing.PixelRed),
+		objects.NewBall(100, 100, 10, drawing.PixelRed, drawing.PixelBlue),
 	}
 	tiles := []*objects.Tile{
 		objects.NewTile(0, 200, 20, drawing.PixelGreen),

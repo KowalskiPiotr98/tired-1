@@ -28,8 +28,8 @@ func (t *Tile) Draw(grid *drawing.Grid) {
 }
 
 func (t *Tile) HandleBallTouch(ball *Ball) {
-	if *ball.colour == *t.colour {
-		// ignore same colour balls
+	if *ball.touchColour == *t.colour {
+		// ignore same touchColour balls
 		return
 	}
 
@@ -38,7 +38,7 @@ func (t *Tile) HandleBallTouch(ball *Ball) {
 		return
 	}
 
-	// steal ball colour
-	t.colour = ball.colour
+	// steal ball touchColour
+	t.colour = ball.touchColour
 	ball.Bounce(direction)
 }
